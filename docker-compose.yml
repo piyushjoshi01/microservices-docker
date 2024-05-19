@@ -1,0 +1,23 @@
+services:
+  container1:
+    # image: joshi01/container1
+    build:
+      context: ./Container-1
+    ports:
+      - 6000:6000
+    volumes:
+      - .:/files
+    depends_on:
+      - container2
+    environment:
+      NODE_ENV: production
+
+  container2:
+    build:
+      context: ./Container-2
+    ports:
+      - 6060:6060
+    volumes:
+      - .:/files
+    environment:
+      NODE_ENV: production
